@@ -18,6 +18,7 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
+/* eslint-disable-next-line */
 const analytics = getAnalytics(firebaseApp);
 
 ReactDOM.render(
