@@ -6,8 +6,8 @@ const appConfig = {
 		storageBucket: 'shopify-b5394.appspot.com',
 		messagingSenderId: '1070954135438',
 		appId: '1:1070954135438:web:4399632dac63cce554aedf',
-		measurementId: 'G-ZL7C6GKFLN'
-	}
+		measurementId: 'G-ZL7C6GKFLN',
+	},
 };
 
 export default appConfig;

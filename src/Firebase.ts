@@ -12,21 +12,13 @@ const auth = getAuth(app);
 auth.useDeviceLanguage();
 
 if (process.env.REACT_APP_USE_FIREBASE_EMULATORS) {
-	connectAuthEmulator(
-		auth,
-		'http://localhost:9099'
-	);
-
-	connectFirestoreEmulator(
-		firestore,
-		'localhost',
-		8080
-	);
+	connectAuthEmulator(auth, 'http://localhost:9099');
+	connectFirestoreEmulator(firestore, 'localhost', 8080);
 }
 
 export default {
 	app,
 	analytics,
 	firestore,
-	auth
+	auth,
 };
