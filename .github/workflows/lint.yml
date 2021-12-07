@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting on merge
+name: lint the app
 'on':
   pull_request:
   push:
