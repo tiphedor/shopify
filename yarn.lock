@@ -2215,15 +2215,18 @@
   resolved "https://registry.npmjs.org/@testing-library/user-event/-/user-event-7.2.1.tgz#2ad4e844175a3738cb9e7064be5ea070b8863a1c"
   integrity sha512-oZ0Ib5I4Z2pUEcoo95cT1cr6slco9WY7yiPpG+RGNkj8YcYgJnM7pXmYmorNOReh8MIGcKSqXyeGjxnr8YiZbA==
 
-"@tiphedor/eslint-config-base@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@tiphedor/eslint-config-base/-/eslint-config-base-0.0.4.tgz#fd28dca9c8e37e939d78e5e61253314b5e62417f"
-  integrity sha512-tuVugbmJIGzLtFJ/di6DnvUkGXZATwy2KPDOCJUe65Vh1UmiSdImd97kkiRO1rk10l4VXlIaf1Pq4kRpcHhx7w==
+"@tiphedor/eslint-config-base@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@tiphedor/eslint-config-base/-/eslint-config-base-0.1.0.tgz#29a92d0f35e3807efb6f49340d28fac2b8d03708"
+  integrity sha512-gI53eBnO/kt9/V1AwDoDUsUuiDnkER3rEgbjaYi0CBuBCoMzBie5JJRcLXLbbqwIwfoEkIXrlatvNop4ivzXeA==
+  dependencies:
+    eslint-config-airbnb-base "^15.0.0"
+    eslint-plugin-import "^2.25.3"
 
-"@tiphedor/eslint-config-typescript@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@tiphedor/eslint-config-typescript/-/eslint-config-typescript-0.0.4.tgz#47bd0e147e77a94f3efffa499d801d4c054f62d1"
-  integrity sha512-s0/6k/Cr+iTmRdMsKMVdaO948eGnw6tDtQdQOhgTrgXfGRDQT7Dox2csf5scqO+KTH71zxUHY6csle5KXopWDQ==
+"@tiphedor/eslint-config-typescript@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@tiphedor/eslint-config-typescript/-/eslint-config-typescript-0.1.0.tgz#d751b0e9f553eaa2d77c94011c04aa33124fcdbb"
+  integrity sha512-r3TitKIlP0OxAdP7nkvPSWBVyVDGWZcwF/3Cp0I68aVY8/bsiTqgyrRdk4uXKuxwCRbDArsdjFdY93QPTiH5Fw==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -5119,6 +5122,16 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
+eslint-config-airbnb-base@^15.0.0:
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-15.0.0.tgz#6b09add90ac79c2f8d723a2580e07f3925afd236"
+  integrity sha512-xaX3z4ZZIcFLvh2oUNvcX5oEofXda7giYmuplVxoOg5A7EXJMrUyqRgR+mhDhPK8LZ4PttFOBvCYDbX3sUoUig==
+  dependencies:
+    confusing-browser-globals "^1.0.10"
+    object.assign "^4.1.2"
+    object.entries "^1.1.5"
+    semver "^6.3.0"
+
 eslint-config-prettier@^8.3.0:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.3.0.tgz#f7471b20b6fe8a9a9254cc684454202886a2dd7a"
@@ -5167,7 +5180,7 @@ eslint-plugin-flowtype@^5.2.0:
     lodash "^4.17.15"
     string-natural-compare "^3.0.1"
 
-eslint-plugin-import@^2.22.1:
+eslint-plugin-import@^2.22.1, eslint-plugin-import@^2.25.3:
   version "2.25.3"
   resolved "https://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.25.3.tgz#a554b5f66e08fb4f6dc99221866e57cfff824766"
   integrity sha512-RzAVbby+72IB3iOEL8clzPLzL3wpDrlwjsTBAQXgyp5SeTqqY+0bFubwuo+y/HLhNZcXV4XqTBO4LGsfyHIDXg==

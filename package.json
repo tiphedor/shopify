@@ -45,8 +45,8 @@
     ]
   },
   "devDependencies": {
-    "@tiphedor/eslint-config-base": "^0.0.4",
-    "@tiphedor/eslint-config-typescript": "^0.0.4",
+    "@tiphedor/eslint-config-base": "^0.1.0",
+    "@tiphedor/eslint-config-typescript": "^0.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.5.1"
