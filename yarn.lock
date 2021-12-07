@@ -2215,6 +2215,11 @@
   resolved "https://registry.npmjs.org/@testing-library/user-event/-/user-event-7.2.1.tgz#2ad4e844175a3738cb9e7064be5ea070b8863a1c"
   integrity sha512-oZ0Ib5I4Z2pUEcoo95cT1cr6slco9WY7yiPpG+RGNkj8YcYgJnM7pXmYmorNOReh8MIGcKSqXyeGjxnr8YiZbA==
 
+"@tiphedor/eslint-config-base@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/@tiphedor/eslint-config-base/-/eslint-config-base-0.0.4.tgz#fd28dca9c8e37e939d78e5e61253314b5e62417f"
+  integrity sha512-tuVugbmJIGzLtFJ/di6DnvUkGXZATwy2KPDOCJUe65Vh1UmiSdImd97kkiRO1rk10l4VXlIaf1Pq4kRpcHhx7w==
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
