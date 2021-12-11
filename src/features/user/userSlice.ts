@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
 	createUserWithEmailAndPassword,
 	GoogleAuthProvider,
@@ -7,11 +7,17 @@ import {
 } from 'firebase/auth';
 import firebase from '../../Firebase';
 import { RootState } from '../../app/store';
-import { UserState, SignInStatus, EmailPasswordPayload } from './user.type';
+import {
+	UserState,
+	SignInStatus,
+	EmailPasswordPayload,
+	UserData,
+} from './user.type';
 
 const initialState: UserState = {
 	signedIn: SignInStatus.SIGNED_OUT,
 	error: undefined,
+	userData: null,
 };
 
 export const signOutUser = createAsyncThunk('user/signOut', async () => {
@@ -52,7 +58,20 @@ export const signInWithGoogle = createAsyncThunk(
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
-	reducers: {},
+	reducers: {
+		externallySetUser: (
+			state: UserState,
+			{ payload }: PayloadAction<UserData | null>
+		) => {
+			if (!payload) {
+				state = initialState;
+				return;
+			}
+
+			state.signedIn = SignInStatus.SIGNED_IN;
+			state.userData = payload;
+		},
+	},
 	extraReducers: (builder) => {
 		const handleLoadingOnPending = (state: UserState) => {
 			state.signedIn = SignInStatus.LOADING;
@@ -70,9 +89,7 @@ export const userSlice = createSlice({
 
 		builder
 			.addCase(signOutUser.pending, handleLoadingOnPending)
-			.addCase(signOutUser.fulfilled, (state, q) => {
-				state.signedIn = SignInStatus.SIGNED_OUT;
-			});
+			.addCase(signOutUser.fulfilled, (state, q) => initialState);
 
 		builder
 			.addCase(signInUserWithPassword.pending, handleLoadingOnPending)
@@ -91,12 +108,14 @@ export const userSlice = createSlice({
 	},
 });
 
-// export const { xx } = userSlice.actions;
+export const { externallySetUser } = userSlice.actions;
 export const selectIsUserSignedIn = (state: RootState): SignInStatus =>
 	state.user.signedIn;
 export const selectIsUserLoading = (state: RootState): boolean =>
 	state.user.signedIn === SignInStatus.LOADING;
 export const selectUserError = (state: RootState): string | undefined =>
 	state.user.error;
+export const selectUserData = (state: RootState): UserData | null =>
+	state.user.userData;
 
 export default userSlice.reducer;
