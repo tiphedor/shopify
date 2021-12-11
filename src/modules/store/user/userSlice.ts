@@ -5,8 +5,8 @@ import {
 	signInWithEmailAndPassword,
 	signInWithPopup,
 } from 'firebase/auth';
-import firebase from '../../Firebase';
-import { RootState } from '../../app/store';
+import firebase from '../../firebase';
+import { RootState } from '../index';
 import {
 	UserState,
 	SignInStatus,

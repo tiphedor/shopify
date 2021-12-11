@@ -7,7 +7,7 @@ import {
 	browserSessionPersistence,
 	setPersistence,
 } from 'firebase/auth';
-import appConfig from './config';
+import appConfig from '../../config';
 
 const app = initializeApp(appConfig.firebase);
 const analytics = getAnalytics(app);

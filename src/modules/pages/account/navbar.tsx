@@ -4,8 +4,8 @@ import {
 	selectIsUserSignedIn,
 	selectUserData,
 	signOutUser,
-} from '../../features/user/userSlice';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+} from '../../store/user/userSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 const AccountNavbar: React.FC = () => {
 	const dispatch = useAppDispatch();

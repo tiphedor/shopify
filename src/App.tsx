@@ -1,19 +1,22 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from './app/hooks';
+import { useAppDispatch, useAppSelector } from './modules/store/hooks';
 import {
 	externallySetUser,
 	selectIsUserSignedIn,
-} from './features/user/userSlice';
-import firebase from './Firebase';
-import { stripExcessiveInfo } from './features/user/user.utils';
-import AccountNavbar from './component/account/navbar';
+} from './modules/store/user/userSlice';
+import firebase from './modules/firebase';
+import { stripExcessiveInfo } from './modules/store/user/user.utils';
+import AccountNavbar from './modules/pages/account/navbar';
 
-const SignInForm = React.lazy(() => import('./component/account/signin.form'));
-const SignUpForm = React.lazy(() => import('./component/account/signup.form'));
-const HomePage = React.lazy(() => import('./component/homepage'));
-const NotFound = React.lazy(() => import('./component/notfound'));
+const SignInForm = React.lazy(
+	() => import('./modules/pages/account/signin.form')
+);
+const SignUpForm = React.lazy(
+	() => import('./modules/pages/account/signup.form')
+);
+const HomePage = React.lazy(() => import('./modules/pages/homepage'));
+const NotFound = React.lazy(() => import('./modules/pages/notfound'));
 
 const App: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -48,7 +51,6 @@ const App: React.FC = () => {
 						/>
 					</>
 				)}
-
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>

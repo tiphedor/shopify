@@ -1,15 +1,15 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
 	selectIsUserLoading,
 	selectIsUserSignedIn,
 	selectUserError,
-	signInUserWithPassword,
 	signInWithGoogle,
-} from '../../features/user/userSlice';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+	signUpUserWithPassword,
+} from '../../store/user/userSlice';
 
-const SignInForm: React.FC = () => {
+const SignUpForm: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
@@ -27,9 +27,9 @@ const SignInForm: React.FC = () => {
 		[]
 	);
 
-	const handleEmailPasswordSignIn = () =>
-		dispatch(signInUserWithPassword({ email, password }));
 	const handleGoogleSignIn = () => dispatch(signInWithGoogle());
+	const handleEmailPasswordSignUp = () =>
+		dispatch(signUpUserWithPassword({ email, password }));
 
 	useEffect(() => {
 		if (isLoggedIn) {
@@ -40,13 +40,12 @@ const SignInForm: React.FC = () => {
 	return (
 		<div className="App">
 			{userError && userError}
-
-			<h1>Sign In With a Social Provider</h1>
+			<h1>Sign Up With a Social Provider</h1>
 			<button onClick={handleGoogleSignIn} disabled={isLoading}>
 				Google
 			</button>
 
-			<h1>Sign In With an email address and password</h1>
+			<h1>Sign Up With an email address and password</h1>
 			<label htmlFor="email">Email Address</label>
 			<input
 				id="email"
@@ -69,11 +68,11 @@ const SignInForm: React.FC = () => {
 
 			<br />
 
-			<button disabled={isLoading} onClick={handleEmailPasswordSignIn}>
-				Sign In
+			<button disabled={isLoading} onClick={handleEmailPasswordSignUp}>
+				Sign Up
 			</button>
 		</div>
 	);
 };
 
-export default SignInForm;
+export default SignUpForm;

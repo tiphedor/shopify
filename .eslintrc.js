@@ -27,7 +27,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: 'src/features/**/*.{js,jsx,ts,tsx}',
+			files: 'src/modules/store/**/*.{js,jsx,ts,tsx}',
 			rules: {
 				'no-param-reassign': 'off',
 			},
