@@ -39,18 +39,8 @@ const App: React.FC = () => {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 
-				{!isSignedIn && (
-					<>
-						<Route
-							path="/account/sign-in"
-							element={<SignInForm />}
-						/>
-						<Route
-							path="/account/sign-up"
-							element={<SignUpForm />}
-						/>
-					</>
-				)}
+				<Route path="/account/sign-in" element={<SignInForm />} />
+				<Route path="/account/sign-up" element={<SignUpForm />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>

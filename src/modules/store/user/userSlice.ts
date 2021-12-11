@@ -14,7 +14,7 @@ import {
 	UserData,
 } from './user.type';
 
-const initialState: UserState = {
+export const initialState: UserState = {
 	signedIn: SignInStatus.SIGNED_OUT,
 	error: undefined,
 	userData: null,
@@ -27,18 +27,14 @@ export const signOutUser = createAsyncThunk('user/signOut', async () => {
 export const signInUserWithPassword = createAsyncThunk(
 	'user/signInWithPassword',
 	async ({ email, password }: EmailPasswordPayload) => {
-		// todo return user info
 		await signInWithEmailAndPassword(firebase.auth, email, password);
-		return {};
 	}
 );
 
 export const signUpUserWithPassword = createAsyncThunk(
 	'user/signUpWithPassword',
 	async ({ email, password }: EmailPasswordPayload) => {
-		// todo return user info
 		await createUserWithEmailAndPassword(firebase.auth, email, password);
-		return {};
 	}
 );
 
@@ -46,12 +42,7 @@ export const signInWithGoogle = createAsyncThunk(
 	'user/signInWithGoogle',
 	async () => {
 		const googleProvider = new GoogleAuthProvider();
-		// todo return user info
-		// const authResult =
-		// const user = authResult?.user;
 		await signInWithPopup(firebase.auth, googleProvider);
-
-		return {};
 	}
 );
 
@@ -64,12 +55,12 @@ export const userSlice = createSlice({
 			{ payload }: PayloadAction<UserData | null>
 		) => {
 			if (!payload) {
-				state = initialState;
-				return;
+				return initialState;
 			}
 
 			state.signedIn = SignInStatus.SIGNED_IN;
 			state.userData = payload;
+			return state;
 		},
 	},
 	extraReducers: (builder) => {
@@ -82,28 +73,20 @@ export const userSlice = createSlice({
 			state.error = action.error.code;
 		};
 
-		const handleAuthSuccess = (state: UserState) => {
-			state.signedIn = SignInStatus.SIGNED_IN;
-			// todo: add user info
-		};
-
 		builder
 			.addCase(signOutUser.pending, handleLoadingOnPending)
 			.addCase(signOutUser.fulfilled, (state, q) => initialState);
 
 		builder
 			.addCase(signInUserWithPassword.pending, handleLoadingOnPending)
-			.addCase(signInUserWithPassword.fulfilled, handleAuthSuccess)
 			.addCase(signInUserWithPassword.rejected, handleAuthError);
 
 		builder
 			.addCase(signUpUserWithPassword.pending, handleLoadingOnPending)
-			.addCase(signUpUserWithPassword.fulfilled, handleAuthSuccess)
 			.addCase(signUpUserWithPassword.rejected, handleAuthError);
 
 		builder
 			.addCase(signInWithGoogle.pending, handleLoadingOnPending)
-			.addCase(signInWithGoogle.fulfilled, handleAuthSuccess)
 			.addCase(signInWithGoogle.rejected, handleAuthError);
 	},
 });
